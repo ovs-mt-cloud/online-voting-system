@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Pollify</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f9fbff;
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4facfe;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 70px 8%;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #666;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* ABOUT SECTION */
+.about {
+    padding: 60px 8%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.about-image img {
+    width: 380px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* MISSION */
+.mission {
+    padding: 60px 8%;
+    background: #eef5ff;
+    text-align: center;
+}
+
+.mission h2 {
+    margin-bottom: 20px;
+}
+
+.mission p {
+    max-width: 700px;
+    margin: auto;
+    color: #555;
+}
+
+/* TEAM */
+.team {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.team h2 {
+    margin-bottom: 40px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.member {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.member img {
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* CTA */
+.cta {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.cta a {
+    padding: 12px 25px;
+    background: #4facfe;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+    <div class="logo">Online Polling System</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a> 
+        <a href="{% url 'poll_list' %}">Polls</a> 
+        <a href="{% url 'aboutus' %}">About Us</a> 
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contactus' %}">Contact</a> 
+    </div>
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+    <h1>About Pollify</h1>
+    <p>We are building a modern, simple, and secure online voting platform for everyone.</p>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about">
+    <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>Pollify is an online polling system designed to simplify voting and data collection. Our platform allows users to create polls, share them instantly, and view results in real time.</p>
+        <p>We aim to make decision-making faster and more interactive for communities, organizations, and individuals.</p>
+    </div>
+
+<div class="about-image">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Team">
+</div>
+
+</section>
+
+<!-- MISSION -->
+
+<section class="mission">
+    <h2>Our Mission</h2>
+    <p>Our mission is to provide a fast, secure, and user-friendly voting platform that empowers people to share opinions and make better decisions through real-time feedback.</p>
+</section>
+
+<!-- TEAM -->
+
+<section class="team">
+    <h2>Our Team</h2>
+
+<div class="team-grid">
+    <div class="member">
+        <img src="https://i.pravatar.cc/100?img=1">
+        <h4>Developer</h4>
+        <p>Backend & Django</p>
+    </div>
+
+    <div class="member">
+        <img src="https://i.pravatar.cc/100?img=2">
+        <h4>Designer</h4>
+        <p>UI/UX Specialist</p>
+    </div>
+
+    <div class="member">
+        <img src="https://i.pravatar.cc/100?img=3">
+        <h4>Analyst</h4>
+        <p>Data Insights</p>
+    </div>
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+    <h2>Start Using Pollify Today</h2>
+    <br>
+    <a href="{% url 'poll_list' %}">Go to Polls</a>
+</section>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © 2026 Pollify. All rights reserved.
+</div>
+
+</body>
+</html>

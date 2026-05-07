@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Pollify</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f9fbff;
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4facfe;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 70px 8%;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #666;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* SERVICES GRID */
+.services {
+    padding: 60px 8%;
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
+/* DETAIL SECTION */
+.details {
+    padding: 60px 8%;
+    background: #eef5ff;
+}
+
+.detail-box {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.detail-text {
+    flex: 1;
+}
+
+.detail-text h3 {
+    margin-bottom: 10px;
+}
+
+.detail-text p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.detail-img img {
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* CTA */
+.cta {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.cta a {
+    padding: 12px 25px;
+    background: #4facfe;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .detail-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-img img {
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+    <div class="logo">Online Polling System</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a> 
+        <a href="{% url 'poll_list' %}">Polls</a> 
+        <a href="{% url 'aboutus' %}">About Us</a> 
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contactus' %}">Contact</a> 
+    </div>
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+    <h1>Our Services</h1>
+    <p>We provide powerful tools to create, manage, and analyze polls efficiently.</p>
+</section>
+
+<!-- SERVICES GRID -->
+
+<section class="services">
+    <h2>What We Offer</h2>
+
+<div class="service-grid">
+    <div class="service-card">
+        <h3>📝 Poll Creation</h3>
+        <p>Create custom polls easily with multiple options.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>📊 Live Analytics</h3>
+        <p>View real-time voting results instantly.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>🔒 Secure Voting</h3>
+        <p>Ensure safe and reliable voting process.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>🌐 Easy Sharing</h3>
+        <p>Share polls with users through links.</p>
+    </div>
+</div>
+
+</section>
+
+<!-- DETAILS -->
+
+<section class="details">
+
+<div class="detail-box">
+    <div class="detail-text">
+        <h3>Advanced Poll Management</h3>
+        <p>Manage multiple polls, track responses, and update options seamlessly using our admin system.</p>
+    </div>
+    <div class="detail-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+    </div>
+</div>
+
+<div class="detail-box">
+    <div class="detail-text">
+        <h3>Real-Time Results Visualization</h3>
+        <p>Get instant insights with dynamic vote counting and easy-to-read results.</p>
+    </div>
+    <div class="detail-img">
+        <img src="https://images.unsplash.com/photo-1559526324-593bc073d938">
+    </div>
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+    <h2>Start Creating Polls Today</h2>
+    <br>
+    <a href="{% url 'poll_list' %}">Go to Polls</a>
+</section>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © 2026 Pollify. All rights reserved.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #434343;
+    text-align: center;
+    padding: 5px;
+}
+
+header h1 {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    background-color: aliceblue;
+}
+
+header h2 {
+    margin: 0;
+    padding-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    color: #fff;
+}
+
+.Contactus1{
+    width: 1100px;
+}
+h2{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    display: inline;
+}
+p{
+    font-size: 30px;
+    align-items: center;
+    text-align: justify;
+}
+.main{
+    width: 100%;
+    height: 80VH;
+    background-image: url(Contactus.webp);
+    background-position: center;
+    opacity: initial;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.Content{
+    backdrop-filter: blur(5px);
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.Contact_details {
+    background-color: #474747b9;
+    border-radius: 2px;
+    padding: 20px;
+    width: 500px;
+    height: 350px;
+    text-align: center;
+}
+.Contact_details:hover{
+    box-shadow: 0px 0px 25px #000000;
+    transition: ease-in-out 0.5s;
+}
+.Contact_details h3{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0px;
+    text-decoration: underline;
+}
+.Contact_details .Box {
+    height: 100px;
+    max-height: 100px;
+    max-width: 495px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+label {
+    margin-top: 10px;
+    color: #ffffff;
+}
+input {
+    width: 390PX;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+textarea{
+    min-width: 400px;
+    max-width: 400PX;
+}
+.btn{
+    align-items: center;
+}
+button {
+    align-self: center;
+    margin-top: 30px;
+    width: 250px;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: #ffffff;
+    color: #015EAE;
+    padding: 10px;
+    border: solid 2px #015EAE;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #015EAE;
+    color: #ffffff;
+    box-shadow: 0px 0px 25px #fafafa;
+    transition: ease-in-out 0.5s;
+}

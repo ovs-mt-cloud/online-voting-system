@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Poll Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY FIX */
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4facfe;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* MAIN CENTER */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    background: white;
+    width: 480px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.total {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.result {
+    margin-bottom: 18px;
+}
+
+.label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    width: 0;
+    transition: width 0.8s ease;
+}
+
+/* BUTTON */
+.back-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    text-align: center;
+    background: #4facfe;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #00c6ff;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Pollify</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a> 
+        <a href="{% url 'poll_list' %}">Polls</a> 
+        <a href="{% url 'aboutus' %}">About Us</a> 
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contactus' %}">Contact</a> 
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+    <div class="card">
+        <h2>{{ poll.question }}</h2>
+
+        <hr><br>
+
+        <div class="total">
+            Total Votes: {{ total_votes }}
+        </div>
+
+        {% for choice in poll.choices.all %}
+        <div class="result">
+            <div class="label">
+                <span>{{ choice.option_text }}</span>
+                <span>
+                    {{ choice.votes }} votes
+                    {% if total_votes > 0 %}
+                        ({{ choice.votes|floatformat:0 }}%)
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="bar">
+                <div class="fill" data-votes="{{ choice.votes }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <a href="{% url 'poll_list' %}" class="back-btn">← Back to Poll List</a>
+    </div>
+</div>
+
+<script>
+const totalVotes = {{ total_votes|default:0 }};
+const bars = document.querySelectorAll('.fill');
+
+bars.forEach(bar => {
+    const votes = parseInt(bar.getAttribute('data-votes')) || 0;
+    let percentage = 0;
+
+    if (totalVotes > 0) {
+        percentage = (votes / totalVotes) * 100;
+    }
+
+    setTimeout(() => {
+        bar.style.width = percentage + '%';
+    }, 200);
+});
+</script>
+
+</body>
+</html>

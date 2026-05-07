@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Pollify</title>
+
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY LAYOUT (for sticky footer + centering) */
+body {
+    background: #f5f7fb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4facfe;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* MAIN CONTAINER (centering) */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.4s ease;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #4facfe;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #4facfe, #00c6ff);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* REGISTER LINK */
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #4facfe;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width: 500px){
+    .card {
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+    <div class="logo">Online Polling System</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a> 
+        <a href="{% url 'poll_list' %}">Polls</a> 
+        <a href="{% url 'aboutus' %}">About Us</a> 
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contactus' %}">Contact</a> 
+    </div>
+</div>
+
+<!-- LOGIN FORM -->
+
+<div class="container">
+    <div class="card">
+        <h2>Welcome Back</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red; text-align:center;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-group">
+            <label>Aadhar No</label>
+            <input type="text" name="username" maxlength="12" required placeholder="Enter Aadhar Number">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" required placeholder="Enter Password">
+        </div>
+
+        <button type="submit">Login</button>
+
+        <!-- <div class="register-text">
+            Don’t have an account? 
+            <a href="">Register here</a>
+        </div> -->
+    </form>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © 2026 Pollify. All rights reserved.
+</div>
+
+</body>
+</html>

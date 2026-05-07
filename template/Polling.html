@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vote Now</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY FIX */
+body {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4facfe;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* CENTER CONTENT */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    width: 420px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+}
+
+.option {
+    margin: 12px 0;
+}
+
+.option input {
+    display: none;
+}
+
+.option label {
+    display: block;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option label:hover {
+    border-color: #4facfe;
+    background: #f0f8ff;
+}
+
+.option input:checked + label {
+    background: #4facfe;
+    color: white;
+    border-color: #4facfe;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    background: #4facfe;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.6;
+}
+
+button.active {
+    opacity: 1;
+}
+
+button:hover {
+    background: #00c6ff;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Pollify</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a> 
+        <a href="{% url 'poll_list' %}">Polls</a> 
+        <a href="{% url 'aboutus' %}">About Us</a> 
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contactus' %}">Contact</a> 
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+    <div class="card">
+        <h2>{{ poll.question }}</h2>
+
+        <hr><br>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% for choice in poll.choices.all %}
+            <div class="option">
+                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}" required>
+                <label for="choice{{ forloop.counter }}">
+                    {{ choice.option_text }}
+                </label>
+            </div>
+            {% endfor %}
+
+            <button type="submit" id="voteBtn">Submit Vote</button>
+        </form>
+
+        <a href="{% url 'poll_list' %}" class="back-link">← Back to Poll List</a>
+    </div>
+</div>
+
+<script>
+const radios = document.querySelectorAll('input[type="radio"]');
+const button = document.getElementById('voteBtn');
+
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        button.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
