@@ -1,1 +1,1 @@
-web: gunicorn OVS.wsgi:application
+web: gunicorn OVS.wsgi
